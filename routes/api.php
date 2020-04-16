@@ -15,9 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('guest:api')->group(function () {
-    Route::post('/login','AuthController@login')->name('login');
-	Route::post('/register','AuthController@register')->name('register');
+    Route::post('/login','AuthController@login')->name('api.login');
+	Route::post('/register','AuthController@register')->name('api.register');
 });
+
+//home routes
+ Route::get('/bestsellers','HomeController@bestseller')->name('bestseller');
+ Route::get('/arabic-bestsellers','HomeController@arabicBestseller')->name('arabic_bestseller');
+ Route::get('/teens-bestsellers','HomeController@teensBestseller')->name('teens_bestseller');
+
+ Route::get('/popular','HomeController@popular')->name('popular');
+ Route::get('/sliders','HomeController@sliders')->name('sliders');
+
+
+// home routes
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
