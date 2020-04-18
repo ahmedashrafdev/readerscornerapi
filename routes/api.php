@@ -27,8 +27,20 @@ Route::middleware('guest:api')->group(function () {
  Route::get('/popular','HomeController@popular')->name('popular');
  Route::get('/sliders','HomeController@sliders')->name('sliders');
 
-
 // home routes
+
+//shop routes 
+
+
+Route::get('/categories/{category?}','ShopController@categories')->name('categories');
+Route::get('/authors','ShopController@authors')->name('authors');
+Route::get('/languages','ShopController@languages')->name('languages');
+Route::get('/ages','ShopController@ages')->name('ages');
+Route::get('/products','ShopController@products')->name('products');
+Route::get('/product/{id}','ShopController@product')->name('product');
+Route::get('/checkout','ShopController@checkout')->name('checkout');
+
+//shop routes
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
